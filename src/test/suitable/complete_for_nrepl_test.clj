@@ -8,6 +8,7 @@
             [suitable.middleware :refer [wrap-complete-standalone]]))
 
 (require 'cljs.repl)
+(require 'cljs.repl.node)
 
 (def ^:dynamic *session* nil)
 (def ^:dynamic ^nrepl.server.Server *server* nil)
@@ -56,7 +57,8 @@
 (defmacro with-repl-env [renv & body]
   `(try
      (start ~renv)
-     ~@body
+     (do
+       ~@body)
      (finally
        (stop))))
 
