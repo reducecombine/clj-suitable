@@ -1,17 +1,18 @@
 {:deps {org.clojure/clojurescript {:mvn/version "1.10.879"}
+        org.clojure/clojure {:mvn/version "1.10.3" :scope "provided"}
         compliment/compliment {:mvn/version "0.3.10"}}
 
  :paths ["src/main"]
 
  :aliases {;; for starting nrepl clj & cljs servers for live development
            :dev-figwheel {:extra-paths ["src/dev" "resources" "target"]
-                          :extra-deps {cider/piggieback {:mvn/version "0.4.0"}
+                          :extra-deps {cider/piggieback {:mvn/version "0.5.2"}
                                        cider/cider-nrepl {:mvn/version "0.26.0"}
                                        com.bhauman/figwheel-main {:mvn/version "0.2.14"}}
                           :main-opts ["-m" "suitable.nrepl-figwheel"]}
 
            :dev-shadow {:extra-paths ["src/dev" "resources" "target"]
-                        :extra-deps {cider/piggieback {:mvn/version "0.4.0"}
+                        :extra-deps {cider/piggieback {:mvn/version "0.5.2"}
                                      cider/cider-nrepl {:mvn/version "0.26.0"}
                                      thheller/shadow-cljs {:mvn/version "2.15.8"}}
                         :main-opts ["-m" "suitable.nrepl-shadow"]}
@@ -32,7 +33,7 @@
                   :extra-deps {com.cognitect/test-runner {:git/url "https://github.com/cognitect-labs/test-runner.git"
                                                           :sha "209b64504cb3bd3b99ecfec7937b358a879f55c1"}
                                cider/cider-nrepl {:mvn/version "0.26.0"}
-                               cider/piggieback {:mvn/version "0.4.0"}}
+                               cider/piggieback {:mvn/version "0.5.2"}}
                   :main-opts ["-m" "cognitect.test-runner" "-d" "src/test"]}
 
            ;; build a jar, https://juxt.pro/blog/posts/pack-maven.html

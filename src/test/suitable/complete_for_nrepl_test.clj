@@ -7,9 +7,9 @@
             [nrepl.server :refer [start-server default-handler]]
             [suitable.middleware :refer [wrap-complete-standalone]]))
 
-(def ^:dynamic *handler* cider-nrepl-handler)
-(def ^:dynamic *session* nil)
+(require 'cljs.repl)
 
+(def ^:dynamic *session* nil)
 (def ^:dynamic ^nrepl.server.Server *server* nil)
 (def ^:dynamic ^nrepl.transport.FnTransport *transport* nil)
 
@@ -51,8 +51,7 @@
 
 (comment
   (start (cljs.repl.node/repl-env))
-  (stop)
-  )
+  (stop))
 
 (defmacro with-repl-env [renv & body]
   `(try
@@ -77,7 +76,7 @@
             explanation (pr-str response)]
         (is (= "cljs.user" (:ns response))
             explanation)
-        (is (= ["#js {}"] (:value response))
+        (is (= ["#js{}"] (:value response))
             explanation)
         (is (= #{"done"} (:status response))
             explanation)))))
